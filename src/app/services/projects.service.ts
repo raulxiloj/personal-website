@@ -22,4 +22,8 @@ export class ProjectsService {
     )
   }
 
+  getProject(index) {
+    return this.http.get(`https://angular-portafolio-87cb3.firebaseio.com/projects/${index}.json`);
+  }
+
 }

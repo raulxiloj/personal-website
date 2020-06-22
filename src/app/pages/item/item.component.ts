@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { ProjectsService } from 'src/app/services/projects.service';
 
 @Component({
   selector: 'app-item',
@@ -7,9 +9,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ItemComponent implements OnInit {
 
-  constructor() { }
+  project: any = {};
+
+  constructor(private route: ActivatedRoute, public projectService: ProjectsService) { }
 
   ngOnInit(): void {
+    this.route.params.subscribe(
+      params => {
+        console.log(params['index'])
+        this.projectService.getProject(params['index']).subscribe(
+          project => {
+            this.project = project;
+          }
+        )
+      }
+    )
   }
 
 }
