@@ -1,0 +1,14 @@
+<section class="ae-container-fluid rk-main">
+    <section class="ae-container-fluid ae-container-fluid--inner rk-portfolio">
+        <div class="ae-masonry ae-masonry-md-3 ae-masonry-xl-3">
+            <a *ngFor="let project of projectService.projectsFilter; let i = index" [routerLink]="['/item',i]"
+                class="rk-item ae-masonry__item">
+                <img [src]="project.image" alt="">
+                <div class="item-meta">
+                    <h2>{{ project.project }}</h2>
+                    <p>{{ project.description }}</p>
+                </div>
+            </a>
+        </div>
+    </section>
+</section>
