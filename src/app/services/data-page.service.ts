@@ -9,11 +9,13 @@ export class DataPageService {
 
   data: dataPage = {};
   myData: any = {};
+  mySkills: any = [];
   loaded: boolean = false;
 
   constructor(private http: HttpClient) {
     this.loadData();
     this.loadPersonalData();
+    this.loadSkills();
   }
 
   private loadData() {
@@ -25,12 +27,20 @@ export class DataPageService {
     )
   }
 
-  public loadPersonalData() {
+  private loadPersonalData() {
     this.http.get('https://angular-portafolio-87cb3.firebaseio.com/team.json').subscribe(
       res => {
         this.myData = res[0];
       }
     );
+  }
+
+  private loadSkills() {
+    this.http.get('https://angular-portafolio-87cb3.firebaseio.com/skills.json').subscribe(
+      res => {
+        this.mySkills = res;
+      }
+    )
   }
 
 }
