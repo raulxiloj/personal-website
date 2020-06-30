@@ -21,7 +21,8 @@
             <p>Please wait...</p>
         </div>
 
-        <div class="ae-masonry ae-masonry-md-3 ae-masonry-xl-3" *ngIf="!projectService.loading">
+        <div class="ae-masonry ae-masonry-md-3 ae-masonry-xl-3 animate__animated animate__fadeInDown"
+            *ngIf="!projectService.loading">
             <a *ngFor="let project of projectService.projects; let i = index" [routerLink]="['/item',i]"
                 class="rk-item ae-masonry__item">
                 <img [src]="project.image" alt="">
